@@ -5,7 +5,8 @@
 - stow
 - git
 - zsh
-
+- fzf
+- fd
 ## Installazione
 
 ```bash
