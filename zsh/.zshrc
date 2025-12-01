@@ -55,14 +55,12 @@ export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --exc
 
 # Stile FZF (Bordi arrotondati e caratteri sicuri)
 export FZF_DEFAULT_OPTS=" \
---height 40% \
+--height 60% \
 --layout=reverse \
 --info=inline \
 --border=rounded \
---prompt='Search: ' \
 --pointer='> ' \
---marker='* ' \
---color='hl:148,hl+:154,pointer:032,marker:010,bg+:237,gutter:235'"
+--marker='* '"
 
 # Anteprima per CTRL-T
 export FZF_CTRL_T_OPTS="
@@ -88,7 +86,11 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # Forza l'uso di fd per cercare i file
 zstyle ':fzf-tab:complete:*:*files*' fzf-completion-file-finder $FZF_DEFAULT_COMMAND
 # Configurazione finestra fzf-tab
-zstyle ':fzf-tab:*' fzf-flags --height=40% --layout=reverse --preview-window='right:60%:wrap'
+zstyle ':fzf-tab:*' fzf-flags \
+                            --height=60% \
+                            --layout=reverse \
+                            --border=rounded \
+                            --preview-window='right:60%:wrap'
 
 # 1. Preview per variabili d'ambiente
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
@@ -121,7 +123,7 @@ zstyle ':fzf-tab:complete:git-(checkout|switch):*' fzf-preview \
 
 # 5. Preview per git diff / add (mostra le differenze del file)
 zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
-	'git diff $word'
+	'git diff $word --color=always'
 
 source ~/.zsh-conf/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
