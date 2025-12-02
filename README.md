@@ -23,7 +23,7 @@ stow */
 
 ## Aggiornamento submodules
 
-Esegui questo comando nella cartella prinicipale "~/.dotfiles/
+Esegui questo comando nella cartella prinicipale "~/.dotfiles/"
 
 ```bash
 git submodule update --remote --merge --recursive
