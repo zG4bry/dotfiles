@@ -39,7 +39,7 @@ if command -v eza &> /dev/null; then
     alias tree='eza --tree --icons'
 else
     alias ls='ls --color=auto'
-    alias la='ls -lah --color=auto'
+    alias la='ls -lAh --color=auto'
 fi
 
 bindkey -e
@@ -64,10 +64,10 @@ export FZF_DEFAULT_OPTS=" \
 
 # Anteprima per CTRL-T
 export FZF_CTRL_T_OPTS="
-  --preview 'if [ -d {} ]; then 
-      ls -AF --color=always {}; 
-  else 
-      bat -n --color=always --line-range :500 {}; 
+  --preview 'if [ -d {} ]; then
+      ls -AF --color=always {};
+  else
+      bat -n --color=always --line-range :500 {};
   fi'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
@@ -130,3 +130,6 @@ source ~/.zsh-conf/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
+[[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
