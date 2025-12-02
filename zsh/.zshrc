@@ -21,7 +21,7 @@ setopt autocd             # Se scrivi solo una cartella, fai cd dentro (es: 'Des
 # --- Inizializzazione tema e completamento ---
 source ~/.zsh-conf/powerlevel10k/powerlevel10k.zsh-theme
 autoload -U compinit; compinit
-
+autoload -U colors; colors
 # --- Caricamento plugins ---
 # Syntax Highlighting va in fondo
 source ~/.zsh-conf/fzf-tab/fzf-tab.plugin.zsh
