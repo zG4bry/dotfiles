@@ -7,10 +7,11 @@
 - zsh
 - fzf
 - fd
-## Installazione
+
+## Clona la repo con i submodules
 
 ```bash
-  git clone https://github.com/zG4bry/dotfiles.git $HOME/.dotfiles/
+  git clone --recurse-submodules https://github.com/zG4bry/dotfiles.git $HOME/.dotfiles/
 ```
 
 ## Gestione symlinks con stow
@@ -18,4 +19,12 @@
 ```bash
 cd $HOME/.dotfiles/
 stow */
+```
+
+## Aggiornamento submodules
+
+Esegui questo comando nella cartella prinicipale "~/.dotfiles/
+
+```bash
+git submodule update --remote --merge --recursive
 ```
