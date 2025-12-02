@@ -1,0 +1,12 @@
+[submodule "zsh/.zsh-conf/fzf-tab"]
+	path = zsh/.zsh-conf/fzf-tab
+	url = git@github.com:Aloxaf/fzf-tab.git
+[submodule "zsh/.zsh-conf/powerlevel10k"]
+	path = zsh/.zsh-conf/powerlevel10k
+	url = git@github.com:romkatv/powerlevel10k.git
+[submodule "zsh/.zsh-conf/zsh-autosuggestions"]
+	path = zsh/.zsh-conf/zsh-autosuggestions
+	url = git@github.com:zsh-users/zsh-autosuggestions.git
+[submodule "zsh/.zsh-conf/zsh-syntax-highlighting"]
+	path = zsh/.zsh-conf/zsh-syntax-highlighting
+	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
