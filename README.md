@@ -16,5 +16,6 @@
 ## Gestione symlinks con stow
 
 ```bash
+cd $HOME/.dotfiles/
 stow */
 ```
