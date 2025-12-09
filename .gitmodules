@@ -10,3 +10,6 @@
 [submodule "zsh/.zsh-conf/zsh-syntax-highlighting"]
 	path = zsh/.zsh-conf/zsh-syntax-highlighting
 	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/.zsh-conf/zsh-shift-select"]
+	path = zsh/.zsh-conf/zsh-shift-select
+	url = https://github.com/jirutka/zsh-shift-select.git
