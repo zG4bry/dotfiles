@@ -11,7 +11,7 @@
 ## Clona la repo con i submodules
 
 ```bash
-  git clone --recurse-submodules https://github.com/zG4bry/dotfiles.git $HOME/.dotfiles/
+git clone --recurse-submodules https://github.com/zG4bry/dotfiles.git $HOME/.dotfiles/
 ```
 
 ## Gestione symlinks con stow
