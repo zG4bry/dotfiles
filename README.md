@@ -7,6 +7,7 @@
 - zsh
 - fzf
 - fd
+- bat
 
 ## Clona la repo con i submodules
 
