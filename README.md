@@ -85,6 +85,7 @@ Type=notify
 ExecStart=/usr/bin/rclone mount onedrive: %h/OneDrive \
     --vfs-cache-mode full \
     --vfs-cache-max-age 24h \
+    --vfs-cache-max-size 50G \
     --log-level INFO \
     --log-file %h/.cache/rclone-mount.log
 
