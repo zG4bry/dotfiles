@@ -7,11 +7,12 @@
 - zsh
 - fzf
 - fd
+- bat
 
 ## Clona la repo con i submodules
 
 ```bash
-  git clone --recurse-submodules https://github.com/zG4bry/dotfiles.git $HOME/.dotfiles/
+git clone --recurse-submodules https://github.com/zG4bry/dotfiles.git $HOME/.dotfiles/
 ```
 
 ## Gestione symlinks con stow
@@ -85,6 +86,7 @@ Type=notify
 ExecStart=/usr/bin/rclone mount onedrive: %h/OneDrive \
     --vfs-cache-mode full \
     --vfs-cache-max-age 24h \
+    --vfs-cache-max-size 50G \
     --log-level INFO \
     --log-file %h/.cache/rclone-mount.log
 
