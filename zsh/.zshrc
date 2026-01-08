@@ -56,28 +56,22 @@ export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --exc
 
 # Stile FZF (Bordi arrotondati e caratteri sicuri)
 export FZF_DEFAULT_OPTS=" \
---height 60% \
+--height 50% \
 --layout=reverse \
 --info=inline \
 --border=rounded \
 --pointer='> ' \
 --marker='* ' \
 --preview-window=right:50%:wrap \
---bind 'ctrl-\:change-preview-window(right|hidden|)'"
-
+--bind 'ctrl-\:change-preview-window(right|hidden|)'
+--bind 'ctrl-up:preview-up,ctrl-down:preview-down'"
 # Anteprima per CTRL-T
 export FZF_CTRL_T_OPTS="
   --preview 'if [ -d {} ]; then
       ls -AF --color=always {};
   else
       bat -n --color=always --line-range :500 {};
-  fi'
-<<<<<<< HEAD
-  --bind 'ctrl-\:change-preview-window(right|hidden|)'"
-=======
-  --bind 'ctrl-up:preview-up,ctrl-down:preview-down'
-  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
->>>>>>> refs/remotes/origin/main
+  fi'"
 
 # Anteprima per ALT-C
 export FZF_ALT_C_OPTS="--preview 'ls -F --color=always {}'"
@@ -95,16 +89,12 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:*:*files*' fzf-completion-file-finder $FZF_DEFAULT_COMMAND
 # Configurazione finestra fzf-tab
 zstyle ':fzf-tab:*' fzf-flags \
-                            --height=60% \
+                            --height=50% \
                             --layout=reverse \
                             --border=rounded \
-<<<<<<< HEAD
-                            --preview-window=right:50%:wrap \
-                            --bind='ctrl-\:change-preview-window(right|hidden|)'
-=======
-                            --preview-window='right:60%:wrap' \
+                            --preview-window='right:50%:wrap' \
+                            --bind='ctrl-\:change-preview-window(right|hidden|)' \
                             --bind='ctrl-up:preview-up,ctrl-down:preview-down'
->>>>>>> refs/remotes/origin/main
 
 # 1. Preview per variabili d'ambiente
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
