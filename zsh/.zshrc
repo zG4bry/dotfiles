@@ -61,7 +61,9 @@ export FZF_DEFAULT_OPTS=" \
 --info=inline \
 --border=rounded \
 --pointer='> ' \
---marker='* '"
+--marker='* ' \
+--preview-window=right:50%:wrap \
+--bind 'ctrl-\:change-preview-window(right|hidden|)'"
 
 # Anteprima per CTRL-T
 export FZF_CTRL_T_OPTS="
@@ -70,7 +72,7 @@ export FZF_CTRL_T_OPTS="
   else
       bat -n --color=always --line-range :500 {};
   fi'
-  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+  --bind 'ctrl-\:change-preview-window(right|hidden|)'"
 
 # Anteprima per ALT-C
 export FZF_ALT_C_OPTS="--preview 'ls -F --color=always {}'"
@@ -91,7 +93,8 @@ zstyle ':fzf-tab:*' fzf-flags \
                             --height=60% \
                             --layout=reverse \
                             --border=rounded \
-                            --preview-window='right:60%:wrap'
+                            --preview-window=right:50%:wrap \
+                            --bind='ctrl-\:change-preview-window(right|hidden|)'
 
 # 1. Preview per variabili d'ambiente
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
