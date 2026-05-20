@@ -4,8 +4,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # --- Configurazione history ---
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=50000
+SAVEHIST=50000
 HISTFILE=~/.zsh_history
 setopt appendhistory      # Aggiungi alla storia invece di sovrascrivere
 setopt sharehistory       # Condividi la storia tra terminali aperti
@@ -17,6 +17,14 @@ setopt hist_ignore_all_dups
 #setopt hist_find_no_dups
 setopt hist_reduce_blanks
 setopt autocd             # Se scrivi solo una cartella, fai cd dentro (es: 'Desktop' -> cd Desktop)
+
+# --- Inizializzazione Keymap (Emacs) e Stile Selezione ---
+bindkey -e
+zle_highlight=(region:bg=4,fg=15)  # Evidenziazione visiva della selezione (regione)
+
+# --- Configurazione Cache ---
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+[[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
 
 # --- Inizializzazione tema e completamento ---
 source ~/.zsh-conf/powerlevel10k/powerlevel10k.zsh-theme
@@ -43,7 +51,6 @@ else
     alias la='ls -lAh --color=auto'
 fi
 
-bindkey -e
 
 # --- Configurazione FZF ---
 # Configurazione CTRL-T, ALT-C
@@ -63,18 +70,21 @@ export FZF_DEFAULT_OPTS=" \
 --pointer='> ' \
 --marker='* ' \
 --preview-window=right:50%:wrap \
---bind 'ctrl-\:change-preview-window(right|hidden|)'
+--bind 'ctrl-\\:change-preview-window(right|hidden|)' \
 --bind 'ctrl-up:preview-up,ctrl-down:preview-down'"
-# Anteprima per CTRL-T
+
+# Anteprima per CTRL-T (usa eza/bat se disponibili, altrimenti ls/cat)
 export FZF_CTRL_T_OPTS="
   --preview 'if [ -d {} ]; then
-      ls -AF --color=always {};
+      command -v eza &> /dev/null && eza -lh --icons --color=always {} || ls -lAFh --color=always {};
   else
-      bat -n --color=always --line-range :500 {};
+      command -v bat &> /dev/null && bat -n --color=always --line-range :500 {} || \
+      command -v batcat &> /dev/null && batcat -n --color=always --line-range :500 {} || \
+      cat {};
   fi'"
 
-# Anteprima per ALT-C
-export FZF_ALT_C_OPTS="--preview 'ls -F --color=always {}'"
+# Anteprima per ALT-C (usa eza se disponibile, altrimenti ls)
+export FZF_ALT_C_OPTS="--preview 'command -v eza &> /dev/null && eza -lh --icons --color=always {} || ls -lAFh --color=always {}'"
 source <(fzf --zsh)
 
 # --- Configurazione FZF-TAB ---
@@ -105,11 +115,17 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview '
   local target=${realpath:-$word}
 
   if [ -d "$target" ]; then
-     # È una directory: usa ls
-     ls -AF --color=always "$target"
+     # È una directory: usa eza se disponibile, altrimenti ls
+     command -v eza &> /dev/null && eza -lh --icons --color=always "$target" || ls -lAFh --color=always "$target"
   elif [ -f "$target" ]; then
-     # È un file: usa bat
-     bat --color=always --style=numbers --line-range :500 "$target"
+     # È un file: usa bat o batcat se disponibili, altrimenti cat
+     if command -v bat &> /dev/null; then
+         bat --color=always --style=numbers --line-range :500 "$target"
+     elif command -v batcat &> /dev/null; then
+         batcat --color=always --style=numbers --line-range :500 "$target"
+     else
+         cat "$target"
+     fi
   else
      # Non è né file né cartella (flag, comandi, etc): Pulisci la preview
      echo " "
@@ -138,4 +154,6 @@ source ~/.zsh-conf/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
 
-. "$HOME/.local/bin/env"
+
+# Added by Antigravity CLI installer
+export PATH="/home/gab/.local/bin:$PATH"

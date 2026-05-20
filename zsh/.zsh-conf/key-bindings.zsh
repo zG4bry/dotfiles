@@ -15,8 +15,8 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
   zle -N zle-line-finish
 fi
 
-# Use emacs key bindings
-bindkey -e
+# Use emacs key bindings (already initialized in .zshrc)
+# bindkey -e
 
 # [PageUp] - Up a line of history
 if [[ -n "${terminfo[kpp]}" ]]; then
@@ -31,7 +31,7 @@ if [[ -n "${terminfo[knp]}" ]]; then
   bindkey -M vicmd "${terminfo[knp]}" down-line-or-history
 fi
 
-# Start typing + [Up-Arrow] - fuzzy find history forward
+# Start typing + [Up-Arrow] - fuzzy find history backward
 autoload -U up-line-or-beginning-search
 zle -N up-line-or-beginning-search
 
@@ -44,7 +44,7 @@ if [[ -n "${terminfo[kcuu1]}" ]]; then
   bindkey -M vicmd "${terminfo[kcuu1]}" up-line-or-beginning-search
 fi
 
-# Start typing + [Down-Arrow] - fuzzy find history backward
+# Start typing + [Down-Arrow] - fuzzy find history forward
 autoload -U down-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
