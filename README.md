@@ -8,6 +8,7 @@
 - fzf
 - fd
 - bat
+- eza
 
 ## Clona la repo con i submodules
 
