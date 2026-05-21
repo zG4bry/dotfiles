@@ -1,8 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # --- Configurazione history ---
 HISTSIZE=50000
 SAVEHIST=50000
@@ -27,7 +22,6 @@ export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 [[ -d "$ZSH_CACHE_DIR" ]] || mkdir -p "$ZSH_CACHE_DIR"
 
 # --- Inizializzazione tema e completamento ---
-source ~/.zsh-conf/powerlevel10k/powerlevel10k.zsh-theme
 autoload -U compinit; compinit
 autoload -U colors; colors
 # --- Caricamento plugins ---
@@ -146,14 +140,6 @@ zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
 	'git diff $word --color=always'
 
 source ~/.zsh-conf/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
-[[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
-
 
 # Added by Antigravity CLI installer
 export PATH="/home/gab/.local/bin:$PATH"
