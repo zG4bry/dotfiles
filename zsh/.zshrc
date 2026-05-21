@@ -143,3 +143,5 @@ source ~/.zsh-conf/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Added by Antigravity CLI installer
 export PATH="/home/gab/.local/bin:$PATH"
+
+eval "$(starship init zsh)"

@@ -9,6 +9,7 @@
 - fd
 - bat
 - eza
+- starship
 
 ## Clona la repo con i submodules
 
