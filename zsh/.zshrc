@@ -64,7 +64,7 @@ export FZF_DEFAULT_OPTS=" \
 --pointer='> ' \
 --marker='* ' \
 --preview-window=right:50%:wrap \
---bind 'ctrl-\\:change-preview-window(right|hidden|)' \
+--bind 'alt-p:toggle-preview' \
 --bind 'ctrl-up:preview-up,ctrl-down:preview-down'"
 
 # Anteprima per CTRL-T (usa eza/bat se disponibili, altrimenti ls/cat)
@@ -97,7 +97,7 @@ zstyle ':fzf-tab:*' fzf-flags \
                             --layout=reverse \
                             --border=rounded \
                             --preview-window='right:50%:wrap' \
-                            --bind='ctrl-\:change-preview-window(right|hidden|)' \
+                            --bind='alt-p:toggle-preview' \
                             --bind='ctrl-up:preview-up,ctrl-down:preview-down'
 
 # 1. Preview per variabili d'ambiente
