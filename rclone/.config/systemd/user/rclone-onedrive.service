@@ -1,0 +1,29 @@
+[Unit]
+Description=Rclone Mount per OneDrive
+Documentation=[http://rclone.org/docs/](http://rclone.org/docs/)
+# Assicura che il servizio parta dopo che la rete è attiva
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+# Comando per l'avvio del mount di rclone. %h viene sostituito con la home directory dell'utente.
+ExecStart=/usr/bin/rclone mount onedrive: %h/OneDrive \
+    --vfs-cache-mode full \
+    --vfs-cache-max-age 24h \
+    --vfs-cache-max-size 50G \
+    --log-level INFO \
+    --log-file %h/.cache/rclone-mount.log \
+    --timeout 2m0s \
+    --contimeout 1m0s
+
+# Comando di stop per uno smontaggio pulito
+ExecStop=/usr/bin/fusermount -u %h/OneDrive
+
+# Riavvia il servizio se dovesse terminare con un errore
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+# Avvia il servizio automaticamente quando l'utente esegue il login
+WantedBy=default.target
