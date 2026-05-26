@@ -37,9 +37,11 @@ source ~/.zsh-conf/colored-man-pages.plugin.zsh
 # Usa eza se disponibile, altrimenti ls
 if command -v eza &> /dev/null; then
     alias ls='eza --icons --group-directories-first'
-    alias ll='eza -l --icons --group-directories-first --git'
-    alias la='eza -la --icons --group-directories-first --git'
-    alias tree='eza --tree --icons'
+    alias ll='eza -l --icons --group-directories-first --git --header'
+    alias la='eza -a --icons --group-directories-first --git'
+    alias lla='eza -la --icons --git --group-directories-first --header'    # Vista ad albero (sostituto moderno del comando tree)
+    alias lt='eza --tree --level=2 --icons --group-directories-first'
+
 else
     alias ls='ls --color=auto'
     alias la='ls -lAh --color=auto'
