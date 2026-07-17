@@ -1,0 +1,21 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+      {
+    "command": "workbench.action.toggleEditorWidths",
+    "key": "ctrl+l ctrl+k"
+    },
+    {
+        "command": "opencode.openTerminal",
+        "key": "ctrl+k ctrl+o",
+        "when": "!terminalFocus"
+    }
+]
