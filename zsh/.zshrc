@@ -147,3 +147,6 @@ source ~/.zsh-conf/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="/home/gab/.local/bin:$PATH"
 
 eval "$(starship init zsh)"
+
+# opencode
+export PATH=/home/gab/.opencode/bin:$PATH
