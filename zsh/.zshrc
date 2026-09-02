@@ -47,14 +47,22 @@ else
     alias la='ls -lAh --color=auto'
 fi
 
+# Crea alias solo se ti trovi su ubuntu
+# fd: Debian/Ubuntu espongono il comando come fdfind
+if command -v fdfind &>/dev/null && ! command -v fd &>/dev/null; then
+    alias fd='fdfind'
+    FZF_FD_COMMAND='fdfind'
+else
+    FZF_FD_COMMAND='fd'
+fi
 
 # --- Configurazione FZF ---
 # Configurazione CTRL-T, ALT-C
 
 #export FZF_DEFAULT_COMMAND='find . -maxdepth 4 -not -path "*/.*"'
-export FZF_DEFAULT_COMMAND='fd --strip-cwd-prefix --hidden --follow'
+export FZF_DEFAULT_COMMAND="$FZF_FD_COMMAND --strip-cwd-prefix --hidden --follow"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_ALT_C_COMMAND="$FZF_FD_COMMAND --type d --strip-cwd-prefix --hidden --follow --exclude .git"
 #export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --info=inline'
 
 # Stile FZF (Bordi arrotondati e caratteri sicuri)
