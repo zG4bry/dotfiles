@@ -9,15 +9,14 @@ font-family = JetBrainsMono Nerd Font
 font-size = 16
 theme = Hybrid
 
-# Cursor
-cursor-style = bar
-shell-integration-features = no-cursor
+# Shell Integration
+shell-integration = detect
 
 # Notifications
-bell-features = system,attention,title
+bell-features = system,title
 
 notify-on-command-finish = unfocused
-notify-on-command-finish-action = bell,notify
+notify-on-command-finish-action = notify
 notify-on-command-finish-after = 10s
 
 # Misc
