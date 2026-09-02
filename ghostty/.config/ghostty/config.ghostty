@@ -1,9 +1,13 @@
+# Window
+window-subtitle = working-directory
+window-theme = ghostty
+window-width = 75
+window-height = 23
+
 # Theme
 font-family = JetBrainsMono Nerd Font
 font-size = 16
 theme = Hybrid
-window-subtitle = working-directory
-window-theme = ghostty
 
 # Cursor
 cursor-style = bar

@@ -12,7 +12,7 @@ setopt hist_ignore_all_dups
 #setopt hist_find_no_dups
 setopt hist_reduce_blanks
 setopt autocd             # Se scrivi solo una cartella, fai cd dentro (es: 'Desktop' -> cd Desktop)
-
+setopt globdots
 # --- Inizializzazione Keymap (Emacs) e Stile Selezione ---
 bindkey -e
 zle_highlight=(region:bg=4,fg=15)  # Evidenziazione visiva della selezione (regione)
@@ -49,11 +49,13 @@ fi
 
 # Crea alias solo se ti trovi su ubuntu
 # fd: Debian/Ubuntu espongono il comando come fdfind
-if command -v fdfind &>/dev/null && ! command -v fd &>/dev/null; then
+if command -v fdfind &>/dev/null; then
     alias fd='fdfind'
     FZF_FD_COMMAND='fdfind'
-else
+elif command -v fd &>/dev/null; then
     FZF_FD_COMMAND='fd'
+else
+    unset FZF_FD_COMMAND
 fi
 
 # --- Configurazione FZF ---
@@ -73,7 +75,7 @@ export FZF_DEFAULT_OPTS=" \
 --border=rounded \
 --pointer='> ' \
 --marker='* ' \
---preview-window=right:50%:wrap \
+--preview-window=right:50%:wrap:hidden \
 --bind 'alt-p:toggle-preview' \
 --bind 'ctrl-up:preview-up,ctrl-down:preview-down'"
 
@@ -106,7 +108,7 @@ zstyle ':fzf-tab:*' fzf-flags \
                             --height=50% \
                             --layout=reverse \
                             --border=rounded \
-                            --preview-window='right:50%:wrap' \
+                            --preview-window='right:50%:wrap:hidden' \
                             --bind='alt-p:toggle-preview' \
                             --bind='ctrl-up:preview-up,ctrl-down:preview-down'
 
@@ -152,9 +154,8 @@ zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
 source ~/.zsh-conf/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Added by Antigravity CLI installer
-export PATH="/home/gab/.local/bin:$PATH"
-
+[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
 eval "$(starship init zsh)"
 
 # opencode
-export PATH=/home/gab/.opencode/bin:$PATH
+[[ -d "$HOME/.opencode/bin" ]] && export PATH="$HOME/.opencode/bin:$PATH"
