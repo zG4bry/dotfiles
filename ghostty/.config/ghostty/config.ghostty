@@ -6,7 +6,7 @@ window-height = 23
 
 # Theme
 font-family = JetBrainsMono Nerd Font
-font-size = 16
+font-size = 15
 theme = Hybrid
 
 # Shell Integration
@@ -15,9 +15,9 @@ shell-integration = detect
 # Notifications
 bell-features = system,title
 
-notify-on-command-finish = unfocused
-notify-on-command-finish-action = notify
-notify-on-command-finish-after = 10s
+#notify-on-command-finish = unfocused
+#notify-on-command-finish-action = notify
+#notify-on-command-finish-after = 10s
 
 # Misc
 window-new-tab-position = end
