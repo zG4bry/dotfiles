@@ -24,4 +24,23 @@ window-new-tab-position = end
 window-save-state = never
 
 # Keybinds
+keybind = alt+left=goto_split:left
+keybind = alt+right=goto_split:right
+keybind = alt+up=goto_split:up
+keybind = alt+down=goto_split:down
 
+
+# Regolazione selezione a livello di caratteri/righe (già attive di default, ma puoi personalizzarle)
+keybind = shift+left=adjust_selection:left
+keybind = shift+right=adjust_selection:right
+keybind = shift+up=adjust_selection:up
+keybind = shift+down=adjust_selection:down
+# Regolazione rapida a inizio/fine riga con Ctrl + Shift + Frecce
+keybind = ctrl+shift+left=adjust_selection:beginning_of_line
+keybind = ctrl+shift+right=adjust_selection:end_of_line
+keybind = ctrl+shift+up=adjust_selection:page_up
+keybind = ctrl+shift+down=adjust_selection:page_down
+
+copy-on-select = true
+# Deseleziona automaticamente non appena inizi a digitare da tastiera
+selection-clear-on-typing = true

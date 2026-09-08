@@ -28,7 +28,7 @@ autoload -U colors; colors
 # Syntax Highlighting va in fondo
 source ~/.zsh-conf/fzf-tab/fzf-tab.plugin.zsh
 source ~/.zsh-conf/completion.zsh
-source ~/.zsh-conf/zsh-shift-select/zsh-shift-select.plugin.zsh
+#source ~/.zsh-conf/zsh-shift-select/zsh-shift-select.plugin.zsh
 source ~/.zsh-conf/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh-conf/key-bindings.zsh
 source ~/.zsh-conf/colored-man-pages.plugin.zsh
@@ -57,6 +57,10 @@ elif command -v fd &>/dev/null; then
 else
     unset FZF_FD_COMMAND
 fi
+
+if command -v batcat &>/dev/null; then
+    alias bat='batcat'
+fi  
 
 # --- Configurazione FZF ---
 # Configurazione CTRL-T, ALT-C
@@ -159,3 +163,6 @@ eval "$(starship init zsh)"
 
 # opencode
 [[ -d "$HOME/.opencode/bin" ]] && export PATH="$HOME/.opencode/bin:$PATH"
+
+# opencode
+export PATH=/home/gabriele/.opencode/bin:$PATH
