@@ -1,8 +1,8 @@
 # Window
 window-subtitle = working-directory
 window-theme = ghostty
-window-width = 75
-window-height = 23
+window-width = 91
+window-height = 28
 
 # Theme
 font-family = JetBrainsMono Nerd Font
