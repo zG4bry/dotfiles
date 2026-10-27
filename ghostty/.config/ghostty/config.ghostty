@@ -1,5 +1,6 @@
 # Window
 window-subtitle = working-directory
+window-decoration = true
 window-theme = ghostty
 window-width = 91
 window-height = 28
